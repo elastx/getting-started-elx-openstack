@@ -1,0 +1,1 @@
+variable "keypair_name" {}
