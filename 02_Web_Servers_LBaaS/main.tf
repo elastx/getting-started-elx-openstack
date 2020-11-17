@@ -1,10 +1,5 @@
 provider "openstack" {
-  version     = "~> 1.28"
   use_octavia = true
-}
-
-provider "null" {
-  version = "~> 2.1"
 }
 
 terraform {

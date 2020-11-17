@@ -1,7 +1,3 @@
-provider "openstack" {
-  version = "~> 1.28"
-}
-
 terraform {
   backend "swift" {
     container         = "terraform-state-start"
@@ -10,5 +6,5 @@ terraform {
 }
 
 resource "openstack_compute_keypair_v2" "keypair" {
-  name       = var.keypair_name
+  name = var.keypair_name
 }

@@ -1,11 +1,3 @@
-provider "openstack" {
-  version = "~> 1.28"
-}
-
-provider "null" {
-  version = "~> 2.1"
-}
-
 terraform {
   backend "swift" {
     container         = "terraform-state-core"
