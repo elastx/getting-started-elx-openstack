@@ -1,5 +1,5 @@
 variable "keypair" {
-  type        = map
+  type        = map(any)
   default     = {}
   description = <<DESCRIPTION
 
@@ -17,11 +17,11 @@ variable "image" {
   default = "ubuntu-18.04-server-latest"
 }
 variable "web_hosts" {
-  type    = map
+  type    = map(any)
   default = {}
 }
 variable "images" {
-  type = map
+  type = map(any)
   default = {
     "centos-6-1907"                = "a03d54ca-35b1-4724-9f6b-3288da1e8cba",
     "centos-7-1805"                = "f5587dca-3011-4d53-a912-b55445d04a33",
@@ -41,7 +41,7 @@ variable "images" {
   }
 }
 variable "flavors" {
-  type = map
+  type = map(any)
   default = {
     "v1-standard-4"  = "08857136-dd97-4014-afc2-b5a0bec6e07c",
     "v1-dedicated-8" = "0eea117d-28dd-4bd0-a386-18219004b3bd",
@@ -75,7 +75,7 @@ variable "lb_name" {
 }
 variable "external_network" { default = "elx-public1" }
 variable "external_network_id" {
-  type = map
+  type = map(any)
   default = {
     "elx-public1" = "600b8501-78cb-4155-9c9f-23dfcba88828",
   }

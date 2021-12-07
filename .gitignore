@@ -101,6 +101,7 @@ Temporary Items
 ### Terraform ###
 # Local .terraform directories
 **/.terraform/*
+*/.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate
@@ -182,4 +183,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/vim,linux,macos,emacs,ansible,windows,terraform,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/vim,linux,macos,emacs,ansible,windows,terraform,visualstudiocode.terraform.lock.hcl
