@@ -57,3 +57,8 @@ web-sto1-srv1 ansible_ssh_host=10.0.65.21
 web-sto2-srv1 ansible_ssh_host=10.0.65.7
 web-sto3-srv1 ansible_ssh_host=10.0.65.2
 ```
+
+Now you can open your favourite webbrowser and point it to
+the loadbalancer_ip that you get in the output. If you reload
+the page you will see that it will balance the load in a
+round robin fashion.
