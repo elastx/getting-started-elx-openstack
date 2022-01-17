@@ -66,7 +66,9 @@ Clone this repository and follow the steps and instructions in the ordered folde
 ### Prerequisites
 
 * Terraform
-* Empty tenant in openstack
+* Empty tenant in openstack (optional)
+
+The sections are independent of each other and in the case of you picking and choosing bits and pieces, don't forget to change the names and settings in `example.auto.tfvars` to your environment of each section. 
 
 
 <!-- ROADMAP -->
