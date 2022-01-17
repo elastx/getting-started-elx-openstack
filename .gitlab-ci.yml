@@ -1,0 +1,15 @@
+stages:
+  - deploy
+  
+deploy:
+  stage: deploy
+  script:
+  - cd 01_Router_Networking_Bastion
+  - terraform init
+  - terraform apply -y
+  - cd ../02_Web_Servers_LBaaS
+  - terraform init
+  - terraform apply -y
+  - terraform destroy -y
+  - cd ../01_Router_Networking_Bastion
+  - terraform destroy -y
