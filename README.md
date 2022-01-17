@@ -45,7 +45,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a walkthrough from a clean tenant. We think you can use this as a boiler plate for several use-cases. What you will get:
+This is a walkthrough from a clean tenant and the point is to use this as a boiler plate for several use-cases. What you will get:
 
 * A network stack
 * Bastion host where you can manage your infrastructure
@@ -72,13 +72,13 @@ Clone this repository and follow the steps and instructions in the ordered folde
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/elastx/getting-started-elx-openstack/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
