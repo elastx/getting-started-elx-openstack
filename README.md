@@ -56,7 +56,8 @@ This is a walkthrough from a clean tenant and the point is to use this as a boil
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Clone this repository and follow the steps and instructions in the ordered folders
+The repository is constructed to be used as a starting point, on an empty OpenStack tenant, with the goal to get you started using terraform.
+The repository is structured in 4 separated parts. Each can be followed as instructions in order, or more advanced - used individually (with awareness of configuration!)
 
 * [00_Start_here](./00_Start_here/README.md) To generate Keypair
 * [01_Router_Networking_Bastion](./01_Router_Networking_Bastion/README.md) To create a router, a network with a subnet and a bastion host
@@ -65,11 +66,11 @@ Clone this repository and follow the steps and instructions in the ordered folde
 
 ### Prerequisites
 
+* OpenRC file from openstack sourced
 * Terraform
-* Empty tenant in openstack (optional)
+* Empty tenant in openstack
 
-The sections are independent of each other and in the case of you picking and choosing bits and pieces, don't forget to change the names and settings in `example.auto.tfvars` to your environment of each section. 
-
+In order to use this repository on an existing openstack tenant, you will have to make adjustments in `example.auto.tfvars` to fit your environment of each section.
 
 <!-- ROADMAP -->
 ## Roadmap
