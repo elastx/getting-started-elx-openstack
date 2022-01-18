@@ -1,6 +1,15 @@
 ---
 image: quay.io/elastx/ci-terraform:master
 
+before_script:
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo "$SSH_PUBLIC_KEY" >~/.ssh/id.pub
+  - chmod 0644 ~/.ssh/id.pub
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - echo "StrictHostKeyChecking no" > ~/.ssh/config
+
 stages:
   - version
   - plan
