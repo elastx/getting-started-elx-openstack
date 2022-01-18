@@ -29,7 +29,6 @@ build_all:
     - cd 01_Router_Networking_Bastion
     - terraform init -var-file example.auto.tfvars
     - terraform apply -var-file example.auto.tfvars -auto-approve
-  when: manual
 
 destroy_all:
   stage: destroy_all
@@ -38,4 +37,3 @@ destroy_all:
     - echo $HOME
     - terraform init -var-file example.auto.tfvars
     - terraform destroy -var-file example.auto.tfvars -auto-approve
-  when: manual
