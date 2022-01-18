@@ -20,7 +20,7 @@ terraform_plan:
     - cd 01_Router_Networking_Bastion
     - terraform init -var-file example.auto.tfvars
     - terraform plan -var-file example.auto.tfvars
-  only:
+  when:
     - manual
 
 build_all:
@@ -30,7 +30,7 @@ build_all:
     - cd 01_Router_Networking_Bastion
     - terraform init -var-file example.auto.tfvars
     - terraform apply -var-file example.auto.tfvar -auto-approve
-  only:
+  when:
     - manual
     - schedules
 
@@ -41,6 +41,6 @@ destroy_all:
     - echo $HOME
     - terraform init -var-file example.auto.tfvars
     - terraform destroy -var-file example.auto.tfvar -auto-approve
-  only:
+  when:
     - manual
     - schedules
