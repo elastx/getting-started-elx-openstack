@@ -43,7 +43,7 @@ build_all:
     - terraform apply -var-file example.auto.tfvars -auto-approve
     - cd ../02_Web_Servers_LBaaS
     - terraform init -var-file example.auto.tfvars
-    - terraform plan -var-file example.auto.tfvars
+    - terraform apply -var-file example.auto.tfvars -auto-approve
 
 destroy_all:
   stage: destroy_all
