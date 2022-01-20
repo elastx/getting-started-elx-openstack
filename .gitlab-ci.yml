@@ -48,10 +48,10 @@ build_all:
 destroy_all:
   stage: destroy_all
   script:
-    - cd 01_Router_Networking_Bastion
+    - cd 02_Web_Servers_LBaaS
     - terraform init -var-file example.auto.tfvars
     - terraform destroy -var-file example.auto.tfvars -auto-approve
-    - cd ../02_Web_Servers_LBaaS
+    - cd ../01_Router_Networking_Bastion
     - terraform init -var-file example.auto.tfvars
     - terraform destroy -var-file example.auto.tfvars -auto-approve
 
