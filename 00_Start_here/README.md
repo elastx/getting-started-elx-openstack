@@ -12,20 +12,24 @@ In this section, we will be generating a keypair with Terraform that will be use
 
 ## Confirm authentication
 
-Source your *OpenStack RC File v3*
+Log on to the OpenStack control panel, go to the API Access section and
+download an *OpenStack RC File (Identity API v3)*.
+
+Source the downloaded file, in this example named `myproject-openrc.sh` and
+downloaded while logged in as `myuser`:
 
 ```shell
-$ source ~/Downloads/techfika-openrc.sh
-Please enter your OpenStack Password for project techfika as user techfika:
+$ source ~/Downloads/myproject-openrc.sh
+Please enter your OpenStack Password for project myproject as user myuser:
 ```
 
 ```shell
 $ openstack project list
-+----------------------------------+----------+
-| ID                               | Name     |
-+----------------------------------+----------+
-| abc51ede2adabc321e66b76ced1c2321 | techfika |
-+----------------------------------+----------+
++----------------------------------+-----------+
+| ID                               | Name      |
++----------------------------------+-----------+
+| abc51ede2adabc321e66b76ced1c2321 | myproject |
++----------------------------------+-----------+
 ```
 
 ## Run Terraform
