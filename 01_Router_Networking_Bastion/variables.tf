@@ -5,7 +5,7 @@ variable "keypair" {
 
   A map with a key (name of resource) and value (path to public key) (optinal)
 
-  Example: { "bastion" = "~/.ssh/techfika.pub" }
+  Example: { "bastion" = "~/.ssh/myproject.pub" }
 DESCRIPTION
 }
 variable "keypair_name" {
