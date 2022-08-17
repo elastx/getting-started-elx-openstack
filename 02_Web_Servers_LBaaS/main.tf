@@ -38,7 +38,7 @@ resource "openstack_compute_instance_v2" "web" {
   }
 
   metadata = {
-    "Image used" = var.image
+    "Image used" = lookup(each.value, "image", var.image)
     group        = "web"
   }
 

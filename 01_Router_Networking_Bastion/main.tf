@@ -71,7 +71,7 @@ resource "openstack_compute_instance_v2" "bastion" {
   image_id          = lookup(var.images, lookup(each.value, "image", var.image))
 
   metadata = {
-    "Image used" = var.image
+    "Image used" = lookup(each.value, "image", var.image)
     group        = "bastion"
   }
 
