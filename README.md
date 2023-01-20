@@ -67,7 +67,7 @@ The repository is structured in 4 separated parts. Each can be followed as instr
 ### Prerequisites
 
 * OpenRC file from openstack sourced
-* Terraform
+* Terraform (version <1.3, the use of Swift as backend has been deprecated in later versions)
 * Empty tenant in openstack
 
 In order to use this repository on an existing openstack tenant, you will have to make adjustments in `example.auto.tfvars` to fit your environment of each section.
