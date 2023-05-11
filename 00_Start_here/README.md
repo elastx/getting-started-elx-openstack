@@ -17,17 +17,17 @@ Since Terraform version 1.3 the backend type `swift` is [removed](https://develo
 * A created container named "terraform-state-archive" (the value of variable `bucket` in `main.tf`)
 * OpenStack [EC2 Credentials](https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/)
 
-Either append the Access and Secret keys to your OpenStack RC file or create a new file for the purpose of storing these credentials. Terraform expects them to be formatted in the following way:
+## Confirm authentication
+
+Log on to the OpenStack control panel, go to the API Access section and
+download an *OpenStack RC File (Identity API v3)*.
+
+Either append the EC2 Access and Secret keys to your OpenStack RC file or create a new file for the purpose of storing these credentials. This demo will assume that we have added them to the downloaded OpenStack RC File. Terraform expects them to be formatted in the following way:
 
 ```shell
 export AWS_ACCESS_KEY_ID=<access key>
 export AWS_SECRET_ACCESS_KEY=<secret key>
 ```
-
-## Confirm authentication
-
-Log on to the OpenStack control panel, go to the API Access section and
-download an *OpenStack RC File (Identity API v3)*.
 
 Source the downloaded file, in this example named `myproject-openrc.sh` and
 downloaded while logged in as `myuser`:
