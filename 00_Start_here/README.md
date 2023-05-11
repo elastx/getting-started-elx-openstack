@@ -12,10 +12,10 @@ In this section, we will be generating a keypair with Terraform that will be use
 * python-openstackclient
 * ssh-agent running
 
-Since Terraform version 1.3 the backend type `swift` is [https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends](removed). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
+Since Terraform version 1.3 the backend type `swift` is [removed](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
 
-* A created container named "terraform-state-archive" (the demo value of variable `bucket` in `main.tf`)
-* OpenStack [https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/](EC2 Credentials)
+* A created container named "terraform-state-archive" (the value of variable `bucket` in `main.tf`)
+* OpenStack [EC2 Credentials](https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/)
 
 Either append the Access and Secret keys to your OpenStack RC file or create a new file for the purpose of storing these credentials. Terraform expects them to be formatted in the following way:
 
