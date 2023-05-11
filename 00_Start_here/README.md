@@ -2,13 +2,27 @@
 
 In this section, we will be generating a keypair with Terraform that will be used by the coming examples.
 
-## Prerequisities
+> WARNING: Do not have Terraform generate your keypair in production since the private key is saved in the statefiles. 
+
+## Prerequisites
 
 * Empty tenant/project in OpenStack
-* OpenStack RC File v3 for this empty tenant/project
+* OpenStack RC File v3 for your empty tenant/project
 * Terraform
 * python-openstackclient
 * ssh-agent running
+
+Since Terraform version 1.3 the backend type `swift` is [https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends](removed). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
+
+* A created container named "terraform-state-archive" (the demo value of variable `bucket` in `main.tf`)
+* OpenStack [https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/](EC2 Credentials)
+
+Either append the Access and Secret keys to your OpenStack RC file or create a new file for the purpose of storing these credentials. Terraform expects them to be formatted in the following way:
+
+```shell
+export AWS_ACCESS_KEY_ID=<access key>
+export AWS_SECRET_ACCESS_KEY=<secret key>
+```
 
 ## Confirm authentication
 
@@ -38,20 +52,24 @@ $ openstack project list
 $ terraform init
 Initializing the backend...
 
-Successfully configured the backend "swift"! Terraform will automatically
+Successfully configured the backend "s3"! Terraform will automatically
 use this backend unless the backend configuration changes.
 
 Initializing provider plugins...
-- Checking for available provider plugins...
-- Downloading plugin for provider "openstack" (terraform-providers/openstack) 1.28.0...
-
+- Finding hashicorp/null versions matching "~> 3.1"...
+- Finding terraform-provider-openstack/openstack versions matching "~> 1.45"...
+- Installing hashicorp/null v3.2.1...
+- Installed hashicorp/null v3.2.1 (signed by HashiCorp)
+- Installing terraform-provider-openstack/openstack v1.51.1...
+- Installed terraform-provider-openstack/openstack v1.51.1
+[...]
 Terraform has been successfully initialized!
 ```
 
 ```shell
 $ terraform apply
-An execution plan has been generated and is shown below.
-Resource actions are indicated with the following symbols:
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -60,10 +78,11 @@ Terraform will perform the following actions:
   + resource "openstack_compute_keypair_v2" "keypair" {
       + fingerprint = (known after apply)
       + id          = (known after apply)
-      + name        = "gs-elastx"
+      + name        = "demo-gs-elastx"
       + private_key = (known after apply)
       + public_key  = (known after apply)
       + region      = (known after apply)
+      + user_id     = (known after apply)
     }
 
 Plan: 1 to add, 0 to change, 0 to destroy.
@@ -78,7 +97,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-keypair_name = gs-elastx
+keypair_name = demo-gs-elastx
 [...]
 ```
 
