@@ -3,7 +3,6 @@ terraform {
     bucket                        = "terraform-state-archive"
     key                           = "gs-keypair/terraform.tfstate"
     endpoint                      = "https://swift.elastx.cloud"
-    sts_endpoint                  = "https://swift.elastx.cloud"
     region                        = "us-east-1"
     force_path_style              = "true"
     skip_credentials_validation   = "true"
