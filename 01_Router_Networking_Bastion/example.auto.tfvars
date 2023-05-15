@@ -1,4 +1,4 @@
-keypair_name = "gs-elastx"
+keypair_name = "demo-gs-elastx"
 
 ssh_trusted_endpoints = {
   world = "0.0.0.0/0"

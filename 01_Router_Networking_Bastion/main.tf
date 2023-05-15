@@ -1,7 +1,11 @@
 terraform {
-  backend "swift" {
-    container         = "terraform-state-core"
-    archive_container = "terraform-state-archive-core"
+  backend "s3" {
+    bucket                        = "terraform-state-archive"
+    key                           = "gs-network-bastion/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 
