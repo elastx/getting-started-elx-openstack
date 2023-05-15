@@ -14,7 +14,7 @@ In this section, we will be generating a keypair with Terraform that will be use
 
 Since Terraform version 1.3 the backend type `swift` is [removed](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
 
-* A created container named "terraform-state-archive" (the value of variable `bucket` in `main.tf`)
+* A created container named "terraform-state" (the value of variable `bucket` in `main.tf`)
 * OpenStack [EC2 Credentials](https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/)
 
 ## Confirm authentication
