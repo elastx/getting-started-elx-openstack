@@ -6,7 +6,7 @@ ssh_trusted_endpoints = {
 
 subnet_cidr = "10.0.65.0/24"
 
-flavor = "v1-standard-2"
+flavor = "v1-c2-m8-d80"
 image  = "ubuntu-20.04"
 
 // We strongly advise to use image_id's. A name can get a new ID which forces
@@ -18,8 +18,8 @@ image  = "ubuntu-20.04"
 // referred to by id. All these images can be found using command
 // "openstack image list --community"
 images = {
-  "ubuntu-18.04" = "4137d47a-59a7-455b-95e4-75ae2713067a",
-  "ubuntu-20.04" = "aa49758b-3344-4aea-949e-e3fd884d33d7",
+  "ubuntu-20.04" = "ad20f881-7095-42d5-a438-a980e7d0c78f",
+  "ubuntu-22.04" = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
 }
 
 bastion_hosts = {

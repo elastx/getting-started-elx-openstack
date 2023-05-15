@@ -79,7 +79,8 @@ variable "images" {
     "ubuntu-18.04-server-20180911" = "f9cf1781-1ee0-4a2e-8625-b9d6c09d04c7",
     "ubuntu-18.04-server-20200101" = "f1d2202f-3b60-445d-a5f2-268bdaf2f506",
     "ubuntu-18.04-server-latest"   = "4137d47a-59a7-455b-95e4-75ae2713067a",
-    "ubuntu-20.04-server-latest"   = "aa49758b-3344-4aea-949e-e3fd884d33d7",
+    "ubuntu-20.04-server-latest"   = "ad20f881-7095-42d5-a438-a980e7d0c78f",
+    "ubuntu-22.04-server-latest"   = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
   }
 }
 variable "flavors" {
@@ -94,6 +95,7 @@ variable "flavors" {
     "v1-micro-1"     = "bb856531-64ca-4045-9781-e5444112216e",
     "v2-dedicated-8" = "bfb3a0f7-6512-4553-ad83-66fb51108382",
     "v1-standard-8"  = "e25c6076-b2e5-4ce0-9144-6ea3422c1a54",
+    "v1-c2-m8-d80"   = "64fb665a-4c02-4cba-aeed-2bf2d28dae60",
   }
 }
 variable "flavor" {
