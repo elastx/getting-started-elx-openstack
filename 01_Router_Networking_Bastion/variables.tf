@@ -54,14 +54,14 @@ variable "subnet_dns" {
   type    = list(any)
   default = ["8.8.8.8", "8.8.4.4"]
 }
+variable "bastion_hosts" {
+  type    = map(any)
+  default = {}
+}
 variable "image" {
   # Used as default if not specified from example.auto.tfvars
   type    = string
   default = "ubuntu-20.04-server-latest"
-}
-variable "bastion_hosts" {
-  type    = map(any)
-  default = {}
 }
 variable "images" {
   type = map(any)
@@ -70,32 +70,40 @@ variable "images" {
     "centos-8-elx-latest"         = "30eb25f7-0b25-4038-b044-17c4a4036f97",
     "centos-9-elx-latest"         = "87a88e31-1a4b-44d3-b855-edea08903b96",
     "centos-atomic-7-1805"        = "735d87ac-e057-48e4-bd58-f4d74dc0e04d",
+    "cirros-0.5.1"                = "1525aeac-1a8e-4696-b715-f8f9ffa8f0b9",
     "debian-10-latest"            = "fc316521-5327-4252-bf4f-923ec4f0d372",
     "debian-11-latest"            = "6bc0379d-36aa-4ad8-9381-15acedf20693",
+    "rocky-8-elx-latest"          = "e173724d-bdff-4c9e-9a46-a6e7e622853e",
     "ubuntu-18.04-server-latest"  = "139fca84-cf03-4fb5-8d20-b0c79f00ada9",
     "ubuntu-20.04-server-latest"  = "ad20f881-7095-42d5-a438-a980e7d0c78f",
     "ubuntu-22.04-server-latest"  = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
   }
 }
-variable "flavors" {
-  type = map(any)
-  default = {
-    "v1-standard-4"  = "08857136-dd97-4014-afc2-b5a0bec6e07c",
-    "v1-dedicated-8" = "0eea117d-28dd-4bd0-a386-18219004b3bd",
-    "v1-standard-1"  = "28717ab2-8746-4a77-969d-04eecb61afcf",
-    "v1-standard-2"  = "3f73fc93-ec61-4808-88df-2580d94c1a9b",
-    "v1-mini-1"      = "7a6a998f-ac7f-4fb8-a534-2175b254f75e",
-    "v1-small-1"     = "83d8b44a-26a0-4f02-a981-079446926445",
-    "v1-micro-1"     = "bb856531-64ca-4045-9781-e5444112216e",
-    "v2-dedicated-8" = "bfb3a0f7-6512-4553-ad83-66fb51108382",
-    "v1-standard-8"  = "e25c6076-b2e5-4ce0-9144-6ea3422c1a54",
-    "v1-c2-m8-d80"   = "64fb665a-4c02-4cba-aeed-2bf2d28dae60",
-  }
-}
 variable "flavor" {
   # Used as default if not specified in example.auto.tfvars
   type    = string
-  default = "v1-standard-2"
+  default = "v1-c2-m8-d80"
+}
+variable "flavors" {
+  type = map(any)
+  default = {
+    "v1-c1-m0.5-d20"      = "38f1adc0-5637-4391-903b-798388554628",
+    "v1-c1-m1-d20"        = "c53c4a7c-a579-4a72-9bfd-f9b4bd474dd5",
+    "v1-c1-m2-d20"        = "07905559-28c3-41f2-b6a8-90ec6c21bd25",
+    "v1-c1-m4-d40"        = "543ed29e-dc24-4c6a-b122-0279d8ee6fb1",
+    "v1-c1-m8-d60"        = "35b4310b-6258-49f5-8cc2-27ee993a67a9",
+    "v1-c2-m16-d120"      = "a2a43747-57b5-444c-8f51-c214104db339",
+    "v1-c2-m4-d60"        = "6b576115-1e0d-4f8e-bc3a-8d45732a44b5",
+    "v1-c2-m8-d80"        = "64fb665a-4c02-4cba-aeed-2bf2d28dae60",
+    "v1-c4-m16-d160"      = "2f2c8943-c244-439c-b022-e4aff6c68131",
+    "v1-c4-m32-d240"      = "4619f140-3b3e-4e17-9260-7751a68dbe82",
+    "v1-c4-m8-d120"       = "150ac931-0b69-44df-b165-aabd15b3bc8a",
+    "v1-c8-m16-d240"      = "77a561fb-f002-4a0f-a596-908737fd7e9f",
+    "v1-c8-m32-d320"      = "d8c39704-6596-4837-9a17-6936f663d171",
+    "v1-c8-m64-d480"      = "4e42da2a-b591-4d65-ae79-c531b8fcbbf8",
+    "d2-c8-m120-d1.6k"    = "515e5177-8a3b-4153-a664-ff1dddc97b42",
+    "d3-c24-m240-d3.2k"   = "d83df7fa-156a-461e-a013-3bd19f44606e",
+  }
 }
 variable "user_data" {
   type    = string
