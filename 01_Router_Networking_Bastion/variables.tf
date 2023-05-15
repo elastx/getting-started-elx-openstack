@@ -55,8 +55,9 @@ variable "subnet_dns" {
   default = ["8.8.8.8", "8.8.4.4"]
 }
 variable "image" {
+  # Used as default if not specified from example.auto.tfvars
   type    = string
-  default = "ubuntu-18.04-server-latest"
+  default = "ubuntu-20.04-server-latest"
 }
 variable "bastion_hosts" {
   type    = map(any)
@@ -65,22 +66,15 @@ variable "bastion_hosts" {
 variable "images" {
   type = map(any)
   default = {
-    "centos-6-1907"                = "a03d54ca-35b1-4724-9f6b-3288da1e8cba",
-    "centos-7-1805"                = "f5587dca-3011-4d53-a912-b55445d04a33",
-    "centos-7-elx-latest"          = "ed0c6b36-8706-45a6-9b78-665b8a4f85d0",
-    "centos-8-elx-latest"          = "8ad39f59-a2fe-44f5-a7a0-edce6a865f6c",
-    "centos-atomic-7-1805"         = "735d87ac-e057-48e4-bd58-f4d74dc0e04d",
-    "debian-10-latest"             = "fdf6148d-2464-40b1-bd7e-79fa1b0c7880",
-    "debian-8-latest"              = "2bc467c4-281c-4ea6-9d50-c36bf59d91e2",
-    "debian-9-latest"              = "e237a90f-4ae9-44c6-a434-f52e443aa2fa",
-    "ubuntu-14.04-server-latest"   = "5b8236af-5b31-49d1-8155-b550a55acd3f",
-    "ubuntu-16.04-server-20180912" = "9c61aa37-a553-4753-9c64-b6069aec4dd5",
-    "ubuntu-16.04-server-latest"   = "62d4f86b-b4a2-4d06-b2d6-fa3f081927f9",
-    "ubuntu-18.04-server-20180911" = "f9cf1781-1ee0-4a2e-8625-b9d6c09d04c7",
-    "ubuntu-18.04-server-20200101" = "f1d2202f-3b60-445d-a5f2-268bdaf2f506",
-    "ubuntu-18.04-server-latest"   = "4137d47a-59a7-455b-95e4-75ae2713067a",
-    "ubuntu-20.04-server-latest"   = "ad20f881-7095-42d5-a438-a980e7d0c78f",
-    "ubuntu-22.04-server-latest"   = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
+    "centos-7-elx-latest"         = "f5587dca-3011-4d53-a912-b55445d04a33",
+    "centos-8-elx-latest"         = "30eb25f7-0b25-4038-b044-17c4a4036f97",
+    "centos-9-elx-latest"         = "87a88e31-1a4b-44d3-b855-edea08903b96",
+    "centos-atomic-7-1805"        = "735d87ac-e057-48e4-bd58-f4d74dc0e04d",
+    "debian-10-latest"            = "fc316521-5327-4252-bf4f-923ec4f0d372",
+    "debian-11-latest"            = "6bc0379d-36aa-4ad8-9381-15acedf20693",
+    "ubuntu-18.04-server-latest"  = "139fca84-cf03-4fb5-8d20-b0c79f00ada9",
+    "ubuntu-20.04-server-latest"  = "ad20f881-7095-42d5-a438-a980e7d0c78f",
+    "ubuntu-22.04-server-latest"  = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
   }
 }
 variable "flavors" {
@@ -99,6 +93,7 @@ variable "flavors" {
   }
 }
 variable "flavor" {
+  # Used as default if not specified in example.auto.tfvars
   type    = string
   default = "v1-standard-2"
 }
