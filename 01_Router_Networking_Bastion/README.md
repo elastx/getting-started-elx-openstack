@@ -78,7 +78,6 @@ $ terraform state list
 null_resource.waiter["bastion-sto1-srv1"]
 openstack_compute_floatingip_associate_v2.bastion_fip["bastion-sto1-srv1"]
 openstack_compute_instance_v2.bastion["bastion-sto1-srv1"]
-openstack_compute_keypair_v2.keypair["gs-elastx"]
 openstack_networking_floatingip_v2.bastion["bastion-sto1-srv1"]
 openstack_networking_network_v2.network
 openstack_networking_router_interface_v2.router_interface
