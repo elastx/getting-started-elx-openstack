@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket                        = "terraform-state"
-    key                           = "gs-network-bastion/terraform.tfstate"
+    key                           = "gs-core/terraform.tfstate"
     endpoint                      = "https://swift.elastx.cloud"
     region                        = "us-east-1"
     force_path_style              = "true"
