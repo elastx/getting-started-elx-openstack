@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket                        = "terraform-state-archive"
-    key                           = "terraform-state"
+    key                           = "gs-keypair/terraform.tfstate"
     endpoint                      = "https://swift.elastx.cloud"
     sts_endpoint                  = "https://swift.elastx.cloud"
     region                        = "us-east-1"
