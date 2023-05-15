@@ -67,10 +67,10 @@ EOT
 bastion_servers_map = {
   "bastion-sto1-srv1" = "X.X.X.X"
 }
-network_id = 95efc080-749b-4ea7-a12b-fb7131f75768
-network_name = core_network
-subnet_id = 9eaf5e72-e33f-4e06-b892-f76842b586a0
-subnet_name = core_subnet
+network_id = "95efc080-749b-4ea7-a12b-fb7131f75768"
+network_name = "core_network"
+subnet_id = "9eaf5e72-e33f-4e06-b892-f76842b586a0"
+subnet_name = "core_subnet"
 ```
 
 ```shell
