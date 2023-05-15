@@ -43,7 +43,7 @@ Terraform will perform the following actions:
 
 [...]
 
-Plan: 12 to add, 0 to change, 0 to destroy.
+Plan: 11 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -60,8 +60,10 @@ Outputs:
 
 bastion_secgroup_id = 178c7749-d4d9-47d5-8127-ab306d513e92
 bastion_secgroup_name = bastion
-bastion_servers_ansible = [bastion_servers]
+bastion_servers_ansible = <<EOT
+[bastion_servers]
 bastion-sto1-srv1 ansible_ssh_host=X.X.X.X
+EOT
 bastion_servers_map = {
   "bastion-sto1-srv1" = "X.X.X.X"
 }
