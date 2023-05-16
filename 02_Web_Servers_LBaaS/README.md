@@ -27,7 +27,8 @@ Terraform has been successfully initialized!
 ```shell
 $ terraform apply
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+Terraform used the selected providers to generate the following execution plan. 
+Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -75,7 +76,7 @@ $ openstack server list
 | 61d5303f-8fce-44ee-97b6-95aed512bf03 | default-web-sto2-srv1 | ACTIVE | core_network=10.0.65.31                 | ubuntu-20.04-server-latest | v1-c1-m4-d40 |
 | 48e7aa64-850f-456b-9b16-e173f2fd1731 | bastion-sto1-srv1     | ACTIVE | core_network=10.0.65.201, 91.197.43.245 | ubuntu-20.04-server-latest | v1-c2-m8-d80 |
 +--------------------------------------+-----------------------+--------+-----------------------------------------+----------------------------+--------------+
-
+```
 
 Now you can open your favourite web browser and point it to
 the loadbalancer_ip that you get in the output. If you reload
