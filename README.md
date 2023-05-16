@@ -67,8 +67,20 @@ The repository is structured in 4 separated parts. Each can be followed as instr
 ### Prerequisites
 
 * OpenRC file from openstack sourced
-* Terraform (version <1.3, the use of Swift as backend has been deprecated in later versions)
+* Terraform
 * Empty tenant in openstack
+
+Since Terraform version 1.3 the backend type `swift` is [removed](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
+
+* A created container named "terraform-state" (the value of variable `bucket` in the different `main.tf` files)
+* OpenStack [EC2 Credentials](https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/)
+
+Either append the EC2 Access and Secret keys to your OpenStack RC file (more on the OpenStack RC file in [00_Start_here](./00_Start_here/README.md) or create a new file for the purpose of storing these credentials. This demo will assume that we have added them to our OpenStack RC File in later steps. Terraform expects them to be formatted in the following way:
+
+```shell
+export AWS_ACCESS_KEY_ID=<access key>
+export AWS_SECRET_ACCESS_KEY=<secret key>
+```
 
 In order to use this repository on an existing openstack tenant, you will have to make adjustments in `example.auto.tfvars` to fit your environment of each section.
 
