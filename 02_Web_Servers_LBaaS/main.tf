@@ -3,17 +3,25 @@ provider "openstack" {
 }
 
 terraform {
-  backend "swift" {
-    container         = "terraform-state-webservers"
-    archive_container = "terraform-state-archive-webservers"
+  backend "s3" {
+    bucket                        = "terraform-state"
+    key                           = "gs-web-lbaas/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 
 data "terraform_remote_state" "core" {
-  backend = "swift"
+  backend = "s3"
   config = {
-    container         = "terraform-state-core"
-    archive_container = "terraform-state-archive-core"
+    bucket                        = "terraform-state"
+    key                           = "gs-core/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 

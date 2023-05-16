@@ -2,9 +2,12 @@
 // pass through access to web servers
 bastion_host           = "bastion-sto1-srv1"
 bastion_security_group = "bastion"
-keypair_name           = "gs-elastx"
+keypair_name           = "demo-gs-elastx"
 
-flavor = "v1-standard-1"
+flavor = "v1-c1-m4-d40"
+// Then point out the default image to use in which you can override in the
+// per server definition in the web_hosts map down below
+image = "ubuntu-20.04"
 
 // We strongly advise to use image_id's. A name can get a new ID which forces
 // Terraform to recreate the compute instance(s). Especially images having the
@@ -15,14 +18,16 @@ flavor = "v1-standard-1"
 // referred to by id. All these images can be found using command
 // "openstack image list --community"
 images = {
-  "ubuntu-18.04" = "4137d47a-59a7-455b-95e4-75ae2713067a",
-  "ubuntu-20.04" = "aa49758b-3344-4aea-949e-e3fd884d33d7",
+  "ubuntu-20.04" = "ad20f881-7095-42d5-a438-a980e7d0c78f",
+  "ubuntu-22.04" = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
 }
 
-// Then point out the default image to use in which you can override in the
-// per server definition in the web_hosts map down below
-image = "ubuntu-20.04"
-
+// This cloud config example installs a set of packages 
+// and fetches data from the Elastx meta-data server regarding 
+// the respective instance's hostname and availability zone.
+// It then feeds this information into our index.html file and is purely
+// used for visual confirmation that our instance's ended up in different
+// availability zones. 
 user_data = <<DATA
 #cloud-config
 package_update: true
@@ -60,4 +65,6 @@ web_hosts = {
   "web-sto3-srv1" = { "az" = "sto3" }
 }
 
+
 lb_name = "web-se-sto-lb1"
+
