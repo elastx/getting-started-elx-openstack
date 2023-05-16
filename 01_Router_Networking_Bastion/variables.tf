@@ -66,7 +66,7 @@ variable "image" {
 variable "images" {
   type = map(any)
   default = {
-    "centos-7-elx-latest"         = "f5587dca-3011-4d53-a912-b55445d04a33",
+    "centos-7-1805"               = "f5587dca-3011-4d53-a912-b55445d04a33",
     "centos-8-elx-latest"         = "30eb25f7-0b25-4038-b044-17c4a4036f97",
     "centos-9-elx-latest"         = "87a88e31-1a4b-44d3-b855-edea08903b96",
     "centos-atomic-7-1805"        = "735d87ac-e057-48e4-bd58-f4d74dc0e04d",
