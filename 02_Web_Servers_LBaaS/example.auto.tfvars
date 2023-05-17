@@ -20,7 +20,7 @@ image = "ubuntu-20.04-server-latest"
 // the respective instance's hostname and availability zone.
 // It then feeds this information into our index.html file and is purely
 // used for visual confirmation that our instance's ended up in different
-// availability zones
+// availability zones and that the load balancing is working as expected
 user_data = <<DATA
 #cloud-config
 package_update: true
