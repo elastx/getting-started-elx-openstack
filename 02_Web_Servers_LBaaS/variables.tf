@@ -21,6 +21,14 @@ variable "image" {
   type    = string
   default = "ubuntu-20.04-server-latest"
 }
+# We strongly advise to use image_id's. A name can get a new ID which forces
+# Terraform to recreate the compute instance(s). Especially images having the
+# "latest" suffix. Here's an example how to map a custom name to an ID
+
+# For a full list of available public images you can use the command 
+# "openstack image list". Images with "latest" suffix are renamed but can be
+# referred to by id. All these images can be found using command
+# "openstack image list --community"
 variable "images" {
   type = map(any)
   default = {
