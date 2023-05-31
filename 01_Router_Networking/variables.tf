@@ -18,7 +18,9 @@ variable "subnet_dns" {
   type    = list(any)
   default = ["8.8.8.8", "8.8.4.4"]
 }
-variable "external_network" { default = "elx-public1" }
+variable "external_network" { 
+  default = "elx-public1" 
+}
 variable "external_network_id" {
   type = map(any)
   default = {

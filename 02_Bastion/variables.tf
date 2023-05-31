@@ -3,7 +3,7 @@ variable "keypair" {
   default     = {}
   description = <<DESCRIPTION
 
-  A map with a key (name of resource) and value (path to public key) (optinal)
+  A map with a key (name of resource) and value (path to public key) (optional)
 
   Example: { "bastion" = "~/.ssh/myproject.pub" }
 DESCRIPTION

@@ -1,4 +1,4 @@
-// Refer to 01_Router_Networking_Bastion.tfvars on which host to use in order
+// Refer to 01_Router_Networking.tfvars on which host to use in order
 // pass through access to web servers
 bastion_host           = "bastion-sto1-srv1"
 bastion_security_group = "bastion"
