@@ -1,10 +1,10 @@
-# Router and networking
+# Bastion hosts
 
-In this example we create a router and network with a subnet
+In this example we create a bastion host. It also setups a security group which allows SSH from specified outside addresses. Members of the security group can also reach each other through SSH.
 
-![Diagram 01](img/01.png)
+The bastion host will use *ephemeral storage* – meaning that the root volume has a direct relation to the instance. When the instance is terminated the disk will be terminated too. However, this kind of storage is the fastest in our platform as it is on the same physical hardware the instance resides on.
 
-> In ELASTX OpenStack, only one router per tenant/project may be used.
+> What is a bastion host? [https://en.wikipedia.org/wiki/Bastion_host](https://en.wikipedia.org/wiki/Bastion_host)
 
 ## Relevant files
 
