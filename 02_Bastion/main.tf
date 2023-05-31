@@ -1,6 +1,18 @@
 terraform {
   backend "s3" {
     bucket                        = "terraform-state"
+    key                           = "gs-bastion/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
+  }
+}
+
+data "terraform_remote_state" "core" {
+  backend = "s3"
+  config = {
+    bucket                        = "terraform-state"
     key                           = "gs-core/terraform.tfstate"
     endpoint                      = "https://swift.elastx.cloud"
     region                        = "us-east-1"
@@ -13,29 +25,6 @@ resource "openstack_compute_keypair_v2" "keypair" {
   for_each   = var.keypair
   name       = each.key
   public_key = file(each.value)
-}
-
-resource "openstack_networking_router_v2" "router" {
-  name                = var.router_name
-  external_network_id = lookup(var.external_network_id, var.external_network)
-}
-
-resource "openstack_networking_network_v2" "network" {
-  name = var.network_name
-}
-
-resource "openstack_networking_subnet_v2" "subnet" {
-  name            = var.subnet_name
-  network_id      = openstack_networking_network_v2.network.id
-  cidr            = var.subnet_cidr
-  ip_version      = 4
-  enable_dhcp     = true
-  dns_nameservers = var.subnet_dns
-}
-
-resource "openstack_networking_router_interface_v2" "router_interface" {
-  router_id = openstack_networking_router_v2.router.id
-  subnet_id = openstack_networking_subnet_v2.subnet.id
 }
 
 resource "openstack_networking_secgroup_v2" "bastion" {
@@ -80,10 +69,8 @@ resource "openstack_compute_instance_v2" "bastion" {
   }
 
   network {
-    name = openstack_networking_network_v2.network.name
+    uuid = data.terraform_remote_state.core.outputs.network_id
   }
-
-  depends_on = [openstack_networking_subnet_v2.subnet]
 }
 
 resource "openstack_networking_floatingip_v2" "bastion" {

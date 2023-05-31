@@ -4,8 +4,6 @@ ssh_trusted_endpoints = {
   world = "0.0.0.0/0"
 }
 
-subnet_cidr = "10.0.65.0/24"
-
 flavor = "v1-c2-m8-d80"
 # We strongly advise to use image_id's. 
 # A name can get a new ID which forces Terraform to recreate the compute instance(s). 
