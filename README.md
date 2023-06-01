@@ -60,7 +60,7 @@ The repository is constructed to be used as a starting point, on an empty OpenSt
 The repository is structured in 5 separated parts. Each can be followed as instructions in order, or more advanced - used individually (with awareness of configuration!)
 
 * [00_Start_here](./00_Start_here/README.md) To generate Keypair
-* [01_Router_Networking](./01_Router_Networking/README.md) To create a router, a network with a subnet and a bastion host
+* [01_Router_Networking](./01_Router_Networking/README.md) To create a router and a network with a subnet
 * [02_Bastion](./02_Bastion/README.md) To setup a bastion host
 * [03_Web_Servers_LBaaS](./03_Web_Servers_LBaaS/README.md) To setup web-servers and a loadbalancer
 * [04_Tear_down](./04_Tear_down/README.md) To clean up the tenant in Openstack
