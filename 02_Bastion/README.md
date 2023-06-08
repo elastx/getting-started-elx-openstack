@@ -39,7 +39,7 @@ Terraform will perform the following actions:
 
 [...]
 
-Plan: 11 to add, 0 to change, 0 to destroy.
+Plan: 7 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -49,7 +49,7 @@ Do you want to perform these actions?
 
 [...]
 
-Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 Releasing state lock. This may take a few moments...
 
 Outputs:
