@@ -71,24 +71,8 @@ subnet_name = "core_subnet"
 
 ```shell
 $ terraform state list
-null_resource.waiter["bastion-sto1-srv1"]
-openstack_compute_floatingip_associate_v2.bastion_fip["bastion-sto1-srv1"]
-openstack_compute_instance_v2.bastion["bastion-sto1-srv1"]
-openstack_networking_floatingip_v2.bastion["bastion-sto1-srv1"]
 openstack_networking_network_v2.network
 openstack_networking_router_interface_v2.router_interface
 openstack_networking_router_v2.router
-openstack_networking_secgroup_rule_v2.bastions_trust
-openstack_networking_secgroup_rule_v2.trusted_endpoints["world"]
-openstack_networking_secgroup_v2.bastion
 openstack_networking_subnet_v2.subnet
-```
-
-```shell
-$ openstack server list
-+--------------------------------------+-------------------+--------+-----------------------------------------+----------------------------+---------------+
-| ID                                   | Name              | Status | Networks                                | Image                      | Flavor        |
-+--------------------------------------+-------------------+--------+-----------------------------------------+----------------------------+---------------+
-| 4426b8c3-9669-4aed-9bdf-f69bed3c08c2 | bastion-sto1-srv1 | ACTIVE | core_network=10.0.65.19, X.X.X.X        | ubuntu-20.04-server-latest | v1-c2-m8-d80  |
-+--------------------------------------+-------------------+--------+-----------------------------------------+----------------------------+---------------+
 ```
