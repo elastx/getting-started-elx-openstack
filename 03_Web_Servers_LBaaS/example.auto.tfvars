@@ -1,28 +1,26 @@
-// Refer to 01_Router_Networking_Bastion.tfvars on which host to use in order
+// Refer to 01_Router_Networking.tfvars on which host to use in order
 // pass through access to web servers
 bastion_host           = "bastion-sto1-srv1"
 bastion_security_group = "bastion"
-keypair_name           = "gs-elastx"
+keypair_name           = "demo-gs-elastx"
 
-flavor = "v1-standard-1"
-
-// We strongly advise to use image_id's. A name can get a new ID which forces
-// Terraform to recreate the compute instance(s). Especially images having the
-// "latest" suffix. Here's an example how to map a custom name to an ID.
-
-// For a full list of available public images you can use the command 
-// "openstack image list". Images with "latest" suffix are renamed but can be
-// referred to by id. All these images can be found using command
-// "openstack image list --community"
-images = {
-  "ubuntu-18.04" = "4137d47a-59a7-455b-95e4-75ae2713067a",
-  "ubuntu-20.04" = "aa49758b-3344-4aea-949e-e3fd884d33d7",
-}
-
-// Then point out the default image to use in which you can override in the
+// Specify the default flavor and image to use, these can be overwritten in the
 // per server definition in the web_hosts map down below
-image = "ubuntu-20.04"
+flavor = "v1-c1-m4-d40"
+// We strongly advise to use image_id's. 
+// A name can get a new ID which forces Terraform to recreate the compute instance(s). 
+// Especially images having the "latest" suffix. 
+// To make the configuration files more readable we show in this demo 
+// how to make a list to map names to specific IDs.
+// The list of mappings is located in variables.tf
+image = "ubuntu-20.04-server-latest"
 
+// This cloud config example installs a set of packages 
+// and fetches data from the Elastx meta-data server regarding 
+// the respective instance's hostname and availability zone.
+// It then feeds this information into our index.html file and is purely
+// used for visual confirmation that our instance's ended up in different
+// availability zones and that the load balancing is working as expected
 user_data = <<DATA
 #cloud-config
 package_update: true
@@ -60,4 +58,6 @@ web_hosts = {
   "web-sto3-srv1" = { "az" = "sto3" }
 }
 
+
 lb_name = "web-se-sto-lb1"
+

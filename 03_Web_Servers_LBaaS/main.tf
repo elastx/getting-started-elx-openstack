@@ -3,17 +3,37 @@ provider "openstack" {
 }
 
 terraform {
-  backend "swift" {
-    container         = "terraform-state-webservers"
-    archive_container = "terraform-state-archive-webservers"
+  backend "s3" {
+    bucket                        = "terraform-state"
+    key                           = "gs-web-lbaas/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 
 data "terraform_remote_state" "core" {
-  backend = "swift"
+  backend = "s3"
   config = {
-    container         = "terraform-state-core"
-    archive_container = "terraform-state-archive-core"
+    bucket                        = "terraform-state"
+    key                           = "gs-core/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
+  }
+}
+
+data "terraform_remote_state" "bastion_data" {
+  backend = "s3"
+  config = {
+    bucket                        = "terraform-state"
+    key                           = "gs-bastion/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 
@@ -117,7 +137,7 @@ resource "openstack_networking_secgroup_rule_v2" "bastion_sg_rule" {
   protocol          = "tcp"
   port_range_min    = 22
   port_range_max    = 22
-  remote_group_id   = data.terraform_remote_state.core.outputs.bastion_secgroup_id
+  remote_group_id   = data.terraform_remote_state.bastion_data.outputs.bastion_secgroup_id
   security_group_id = openstack_networking_secgroup_v2.lb_sg.id
 }
 
@@ -130,7 +150,7 @@ resource "null_resource" "waiter" {
 
   provisioner "remote-exec" {
     connection {
-      bastion_host = data.terraform_remote_state.core.outputs.bastion_servers_map[var.bastion_host]
+      bastion_host = data.terraform_remote_state.bastion_data.outputs.bastion_servers_map[var.bastion_host]
       host         = openstack_compute_instance_v2.web[each.key].access_ip_v4
       type         = "ssh"
       agent        = true

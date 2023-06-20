@@ -3,13 +3,19 @@
 In order to tear down all created resources, you have to go back to the folders in reverse order:
 
 ```shell
-$ cd 02_Web_Servers_LBaaS
+$ cd 03_Web_Servers_LBaaS
 $ terraform destroy
 [...]
 ```
 
 ```shell
-$ cd 01_Router_Networking_Bastion
+$ cd 02_Bastion
+$ terraform destroy
+[...]
+```
+
+```shell
+$ cd 01_Router_Networking
 $ terraform destroy
 [...]
 ```

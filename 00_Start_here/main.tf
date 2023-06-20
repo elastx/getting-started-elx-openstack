@@ -1,10 +1,14 @@
 terraform {
-  backend "swift" {
-    container         = "terraform-state-start"
-    archive_container = "terraform-state-archive-start"
+  backend "s3" {
+    bucket                        = "terraform-state"
+    key                           = "gs-keypair/terraform.tfstate"
+    endpoint                      = "https://swift.elastx.cloud"
+    region                        = "us-east-1"
+    force_path_style              = "true"
+    skip_credentials_validation   = "true"
   }
 }
 
 resource "openstack_compute_keypair_v2" "keypair" {
-  name = var.keypair_name
+  name  = var.keypair_name
 }
