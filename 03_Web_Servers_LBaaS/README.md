@@ -82,3 +82,18 @@ Now you can open your favourite web browser and point it to
 the loadbalancer_ip that you get in the output. If you reload
 the page you will see that it will balance the load in a
 round robin fashion.
+
+Here's an example using curl:
+```shell
+$ curl <loadbalancer_ip>
+default-web-sto2-srv1.openstacklocal
+sto2
+
+$ curl <loadbalancer_ip>
+default-web-sto1-srv1.openstacklocal
+sto1
+
+$ curl <loadbalancer_ip>
+default-web-sto3-srv1.openstacklocal
+sto3
+```
