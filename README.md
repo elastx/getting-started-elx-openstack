@@ -57,18 +57,31 @@ This is a walkthrough from a clean tenant and the point is to use this as a boil
 ## Getting Started
 
 The repository is constructed to be used as a starting point, on an empty OpenStack tenant, with the goal to get you started using terraform.
-The repository is structured in 4 separated parts. Each can be followed as instructions in order, or more advanced - used individually (with awareness of configuration!)
+The repository is structured in 5 separated parts. Each can be followed as instructions in order, or more advanced - used individually (with awareness of configuration!)
 
 * [00_Start_here](./00_Start_here/README.md) To generate Keypair
-* [01_Router_Networking_Bastion](./01_Router_Networking_Bastion/README.md) To create a router, a network with a subnet and a bastion host
-* [02_Web_Servers_LBaaS](./02_Web_Servers_LBaaS/README.md) To setup web-servers and a loadbalancer
-* [03_Tear_down](./03_Tear_down/README.md) To clean up the tenant in Openstack
+* [01_Router_Networking](./01_Router_Networking/README.md) To create a router and a network with a subnet
+* [02_Bastion](./02_Bastion/README.md) To setup a bastion host
+* [03_Web_Servers_LBaaS](./03_Web_Servers_LBaaS/README.md) To setup web-servers and a loadbalancer
+* [04_Tear_down](./04_Tear_down/README.md) To clean up the tenant in Openstack
 
 ### Prerequisites
 
 * OpenRC file from openstack sourced
-* Terraform (version <1.3, the use of Swift as backend has been deprecated in later versions)
+* Terraform
 * Empty tenant in openstack
+
+Since Terraform version 1.3 the backend type `swift` is [removed](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#available-backends). We have updated this demo to use OpenStack Swift's S3 compatible API. This does however mean some extra prerequisites listed below.
+
+* A created container named "terraform-state" (the value of variable `bucket` in the different `main.tf` files)
+* OpenStack [EC2 Credentials](https://docs.elastx.cloud/docs/openstack-iaas/guides/ec2_credentials/)
+
+Either append the EC2 Access and Secret keys to your OpenStack RC file (more on the OpenStack RC file in [00_Start_here](./00_Start_here/README.md) or create a new file for the purpose of storing these credentials. This demo will assume that we have added them to our OpenStack RC File in later steps. Terraform expects them to be formatted in the following way:
+
+```shell
+export AWS_ACCESS_KEY_ID=<access key>
+export AWS_SECRET_ACCESS_KEY=<secret key>
+```
 
 In order to use this repository on an existing openstack tenant, you will have to make adjustments in `example.auto.tfvars` to fit your environment of each section.
 

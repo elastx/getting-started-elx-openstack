@@ -1,1 +1,1 @@
-keypair_name = "gs-elastx"
+keypair_name = "demo-gs-elastx"
