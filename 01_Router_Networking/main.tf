@@ -2,17 +2,20 @@ terraform {
   backend "s3" {
     bucket                        = "terraform-state"
     key                           = "gs-core/terraform.tfstate"
-    endpoint                      = "https://swift.elastx.cloud"
+    endpoints                     = {
+    s3 = "https://swift.elastx.cloud"
+    }
+    skip_s3_checksum              = "true"
     region                        = "us-east-1"
-    force_path_style              = "true"
+    use_path_style                = "true"
     skip_credentials_validation   = "true"
+    skip_requesting_account_id    = "true"
   }
 }
 
 resource "openstack_networking_router_v2" "router" {
   name                = var.router_name
   external_network_id = lookup(var.external_network_id, var.external_network)
-}
 
 resource "openstack_networking_network_v2" "network" {
   name = var.network_name
