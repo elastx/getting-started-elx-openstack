@@ -16,6 +16,7 @@ terraform {
 resource "openstack_networking_router_v2" "router" {
   name                = var.router_name
   external_network_id = lookup(var.external_network_id, var.external_network)
+}
 
 resource "openstack_networking_network_v2" "network" {
   name = var.network_name
