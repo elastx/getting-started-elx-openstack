@@ -11,14 +11,14 @@ ssh_trusted_endpoints = {
 # Please be aware that from a security perspective,
 # this is generally not advisable unless you have additional measures in place to restrict and secure these connections,
 # as it opens up the system to SSH connection attempts from any IP address in the world. 
-flavor = "v1-c2-m8-d80"
+flavor = "v2-c2-m8-d80"
 # We strongly advise to use image_id's. 
 # A name can get a new ID which forces Terraform to recreate the compute instance(s). 
 # Especially images having the "latest" suffix. 
 # To make the configuration files more readable we show in this demo 
 # how to make a list to map names to specific IDs.
 # The list of mappings is located in variables.tf
-image  = "ubuntu-20.04-server-latest"
+image  = "ubuntu-24.04-server-latest"
 
 bastion_hosts = {
   "bastion-sto1-srv1" = { "az" = "sto1" },
