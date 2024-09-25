@@ -81,15 +81,21 @@ resource "openstack_compute_instance_v2" "bastion" {
   }
 }
 
-resource "openstack_networking_floatingip_v2" "bastion" {
+data "openstack_networking_port_v2" "bastion_port" {
+  for_each   = var.bastion_hosts
+  device_id  = openstack_compute_instance_v2.bastion[each.key].id
+  network_id = openstack_compute_instance_v2.bastion[each.key].network.0.uuid
+}
+
+resource "openstack_networking_floatingip_v2" "bastion_fip" {
   for_each = var.bastion_hosts
   pool     = var.external_network
 }
 
-resource "openstack_compute_floatingip_associate_v2" "bastion_fip" {
+resource "openstack_networking_floatingip_associate_v2" "bastion_fip_associate" {
   for_each    = var.bastion_hosts
-  floating_ip = openstack_networking_floatingip_v2.bastion[each.key].address
-  instance_id = openstack_compute_instance_v2.bastion[each.key].id
+  floating_ip = openstack_networking_floatingip_v2.bastion_fip[each.key].address
+  port_id     = data.openstack_networking_port_v2.bastion_port[each.key].id
 }
 
 resource "null_resource" "waiter" {
@@ -101,7 +107,7 @@ resource "null_resource" "waiter" {
 
   provisioner "remote-exec" {
     connection {
-      host  = openstack_networking_floatingip_v2.bastion[each.key].address
+      host  = openstack_networking_floatingip_v2.bastion_fip[each.key].address
       type  = "ssh"
       agent = true
       user  = lookup(each.value, "ssh_user", var.ssh_user)

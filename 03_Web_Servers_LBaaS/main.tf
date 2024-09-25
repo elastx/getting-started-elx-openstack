@@ -1,7 +1,3 @@
-provider "openstack" {
-  use_octavia = true
-}
-
 terraform {
   backend "s3" {
     bucket                        = "terraform-state"
