@@ -6,14 +6,14 @@ keypair_name           = "demo-gs-elastx"
 
 // Specify the default flavor and image to use, these can be overwritten in the
 // per server definition in the web_hosts map down below
-flavor = "v1-c1-m4-d40"
+flavor = "v2-c1-m4-d40"
 // We strongly advise to use image_id's. 
 // A name can get a new ID which forces Terraform to recreate the compute instance(s). 
 // Especially images having the "latest" suffix. 
 // To make the configuration files more readable we show in this demo 
 // how to make a list to map names to specific IDs.
 // The list of mappings is located in variables.tf
-image = "ubuntu-20.04-server-latest"
+image = "ubuntu-24.04-server-latest"
 
 // This cloud config example installs a set of packages 
 // and fetches data from the Elastx meta-data server regarding 

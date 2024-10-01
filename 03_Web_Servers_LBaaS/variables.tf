@@ -32,17 +32,15 @@ variable "image" {
 variable "images" {
   type = map(any)
   default = {
-    "centos-7-1805"               = "f5587dca-3011-4d53-a912-b55445d04a33",
-    "centos-8-elx-latest"         = "30eb25f7-0b25-4038-b044-17c4a4036f97",
-    "centos-9-elx-latest"         = "87a88e31-1a4b-44d3-b855-edea08903b96",
-    "centos-atomic-7-1805"        = "735d87ac-e057-48e4-bd58-f4d74dc0e04d",
+    "centos-8-elx-latest"         = "e3d92553-68af-4e58-8c01-b7beb12dc6f9",
+    "centos-9-elx-latest"         = "91ea2be5-fe86-498b-bf2c-d80df31ffccc",
     "cirros-0.5.1"                = "1525aeac-1a8e-4696-b715-f8f9ffa8f0b9",
-    "debian-10-latest"            = "fc316521-5327-4252-bf4f-923ec4f0d372",
-    "debian-11-latest"            = "6bc0379d-36aa-4ad8-9381-15acedf20693",
-    "rocky-8-elx-latest"          = "e173724d-bdff-4c9e-9a46-a6e7e622853e",
-    "ubuntu-18.04-server-latest"  = "139fca84-cf03-4fb5-8d20-b0c79f00ada9",
-    "ubuntu-20.04-server-latest"  = "ad20f881-7095-42d5-a438-a980e7d0c78f",
-    "ubuntu-22.04-server-latest"  = "4efe3a41-f434-4079-85ca-e10f3f1915d1",
+    "debian-11-latest"            = "02f89e5f-2402-43b5-ad7b-c6edadbff1ea",
+    "debian-12-latest"            = "c54208fd-80bd-464f-af6f-0c90f5a5620e",
+    "rocky-8-elx-latest"          = "5eeb14e4-deb0-4149-bb5a-b3235b04a82f",
+    "ubuntu-20.04-server-latest"  = "d7bb5f69-cdc1-4a17-b2c3-340ca429b6a1",
+    "ubuntu-22.04-server-latest"  = "e2590b0d-8723-4ca7-88b8-8249ca0ef1af",
+    "ubuntu-24.04-server-latest"  = "d7722538-cb6f-4a36-8dcf-36e92aa8d34a",
   }
 }
 variable "flavor" {
@@ -53,20 +51,22 @@ variable "flavor" {
 variable "flavors" {
   type = map(any)
   default = {
-    "v1-c1-m0.5-d20"      = "38f1adc0-5637-4391-903b-798388554628",
-    "v1-c1-m1-d20"        = "c53c4a7c-a579-4a72-9bfd-f9b4bd474dd5",
-    "v1-c1-m2-d20"        = "07905559-28c3-41f2-b6a8-90ec6c21bd25",
-    "v1-c1-m4-d40"        = "543ed29e-dc24-4c6a-b122-0279d8ee6fb1",
-    "v1-c1-m8-d60"        = "35b4310b-6258-49f5-8cc2-27ee993a67a9",
-    "v1-c2-m16-d120"      = "a2a43747-57b5-444c-8f51-c214104db339",
-    "v1-c2-m4-d60"        = "6b576115-1e0d-4f8e-bc3a-8d45732a44b5",
-    "v1-c2-m8-d80"        = "64fb665a-4c02-4cba-aeed-2bf2d28dae60",
-    "v1-c4-m16-d160"      = "2f2c8943-c244-439c-b022-e4aff6c68131",
-    "v1-c4-m32-d240"      = "4619f140-3b3e-4e17-9260-7751a68dbe82",
-    "v1-c4-m8-d120"       = "150ac931-0b69-44df-b165-aabd15b3bc8a",
-    "v1-c8-m16-d240"      = "77a561fb-f002-4a0f-a596-908737fd7e9f",
-    "v1-c8-m32-d320"      = "d8c39704-6596-4837-9a17-6936f663d171",
-    "v1-c8-m64-d480"      = "4e42da2a-b591-4d65-ae79-c531b8fcbbf8",
+    "v2-c1-m0.5-d20"      = "9044311a-8f8d-4b41-b62d-e9e3bcdb1a21",
+    "v2-c1-m1-d20"        = "8e927902-8365-47f9-bd96-edc14668d289",
+    "v2-c1-m2-d20"        = "15b9f196-27a9-4d49-9f81-b1c03bc5db3c",
+    "v2-c1-m4-d40"        = "9369426e-45c3-4929-b712-9a6f7358accd",
+    "v2-c1-m8-d60"        = "6590aa67-51c8-428f-a7ef-634f77203712",
+    "v2-c2-m1-d20"        = "399a82e5-84ba-4656-aee1-f0f7a4a356e8",
+    "v2-c2-m16-d120"      = "f483d6a1-2a2b-4050-8e6a-2b69014e8a28",
+    "v2-c2-m2-d20"        = "8acbb825-7616-40ca-bb39-f1a64c4e8aa9",
+    "v2-c2-m4-d60"        = "37bb6433-c0e7-4702-b416-f98a2cf6d11b",
+    "v2-c2-m8-d80"        = "457bb2c3-554e-4d1b-b3d2-94fa022e8614",
+    "v2-c4-m16-d160"      = "60002ff6-980e-4424-b125-e9b6794043e9",
+    "v2-c4-m32-d240"      = "bc3e0b87-75f1-41a7-9c8c-db9d3d75bbc0",
+    "v2-c4-m8-d120"       = "4e4318bb-8cd9-4274-8150-4eaeb478b8e5",
+    "v2-c8-m16-d240"      = "19015e26-f941-49e0-b826-b44fadc00254",
+    "v2-c8-m32-d320"      = "bba30882-67b1-42fc-a396-f5dd9211e792",
+    "v2-c8-m64-d480"      = "b5976032-0512-4f53-a659-cbe9597f8fc5",
     "d2-c8-m120-d1.6k"    = "515e5177-8a3b-4153-a664-ff1dddc97b42",
     "d3-c24-m240-d3.2k"   = "d83df7fa-156a-461e-a013-3bd19f44606e",
   }
